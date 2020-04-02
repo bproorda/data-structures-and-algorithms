@@ -43,16 +43,16 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
- // Solution code here...
- return arr.sort((a,b) => {
-  if ( a.toLowerCase() > b.toLowerCase()) {
-    return 1;
-  } if ( a.toLowerCase() < b.toLowerCase()) { 
-    return -1;
-  }  else {
-    return 0;
-  }
-});
+  // Solution code here...
+  return arr.sort((a, b) => {
+    if (a.toLowerCase() > b.toLowerCase()) {
+      return 1;
+    } if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
-  return arr.sort((a, b) =>{
+  return arr.sort((a, b) => {
     return a.price - b.price;
   });
 };
@@ -104,16 +104,17 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  arr.sort((a,b) => {
+  arr.sort((a, b) => {
     if (a.lastName > b.lastName) {
       return 1;
     } if (a.lastName < b.lastName) {
       return -1;
-     } else {
+    } else {
       return 0;
     }
-    }) 
-  return arr;};
+  })
+  return arr;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
@@ -156,10 +157,17 @@ const meetings = [
   new Meeting('Monday', '0900', '0945'),
   new Meeting('Friday', '1200', '1345'),
 ];
-
+let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    let day1 = days.findIndex(day => day === a.dayOfWeek);
+    let day2 = days.findIndex(day => day === b.dayOfWeek);
+    return day1 - day2;
+  }
+  )
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -170,6 +178,27 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    let day1 = days.findIndex(day => day === a.dayOfWeek);
+    let day2 = days.findIndex(day => day === b.dayOfWeek);
+    if (day1 === day2) {
+      console.log('day1')
+      if (a.start !== b.start) {
+        return parseInt(a.start)-parseInt(b.start);
+        console.log('a.start !== b.start');
+      } else if (a.start === b.start) {
+        console.log('a.start == b.start');
+        if (parseInt(a.end) < parseInt(b.end)) {
+          return -1;
+        } else if (parseInt(a.end) > parseInt(b.end)) {
+          return 1;
+        }
+      }
+    } else {
+      return day1 - day2;
+    } 
+  }
+  )
 };
 
 /* ------------------------------------------------------------------------------------------------
