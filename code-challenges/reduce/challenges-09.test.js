@@ -221,13 +221,17 @@ Write a function named extractChildren that, given the array of characters from 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
+// const extractChildren = (arr) => {
+//   let newArr = arr.filter(character => character.name.match(/\w*a\w*/));
+//   let answer = newArr.reduce((acc,val) => {
+//    return acc.concat(val.children);
+//   },[]);
+//   answer.pop();
+//   return answer;
+//  };
+
 const extractChildren = (arr) => {
-  let newArr = arr.filter(character => character.name.match(/\w*a\w*/));
-  let answer = newArr.reduce((acc,val) => {
-   return acc.concat(val.children);
-  },[]);
-  answer.pop();
-  return answer;
+  return arr.filter(character => character.name.match(/\w*a\w*/)).reduce((acc,val) => (val.children) ? acc.concat(val.children) : acc,[]); 
  };
 /* ------------------------------------------------------------------------------------------------
 TESTS
