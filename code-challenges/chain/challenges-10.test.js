@@ -20,8 +20,8 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
-};
+    return input.reduce((total, array)=> total + array.reduce((acc,val)=> acc + val, 0), 0)
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -32,8 +32,14 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
-};
+    return  input.map(array => {
+    let filtered =  array.filter(item => {
+         return (typeof item === 'number' && item % 5 === 0)
+       });
+       let raised = filtered.map( number => Math.pow(2, number));
+       return raised;
+     })
+   };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -95,8 +101,8 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
-};
+    return data.filter(character => (character.gender === 'female' || character.gender === 'male')).map(character => character.name).join(' and ');
+   };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -104,8 +110,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
-};
+    return data.map(character => character.name).reduce((acc,val)=> (acc.length >= val.length) ? acc = val : acc );
+  };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
