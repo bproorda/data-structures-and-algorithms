@@ -69,7 +69,15 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  for (let errand = 0; errand < errands.length; errand++) {
+    let itemList = errands[errand].items;
+    for(let itemIndex = 0; itemIndex < itemList.length; itemIndex ++) {
+      if(itemList[itemIndex].name === 'Treats') {
+        let answer = itemList[itemIndex].quantity;
+        return answer;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,7 +95,11 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  if(board[row][col]=== '#') {
+    return 'hit';
+  } else {
+    return 'miss';
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,7 +109,14 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  let answer = 1;
+  for(let i = 0; i < numbers.length; i++) {
+    let array = numbers[i];
+    for( let j = 0; j < array.length; j++) {
+      answer = answer * array[j];
+    }
+  }
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,7 +134,17 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = (weather) => {
-  // Solution code here...
+  let sum = 0;
+  let n = 0;
+  for(let arrayIndex = 0; arrayIndex < weather.length; arrayIndex++) {
+    let dataset = weather[arrayIndex];
+    for(let tempIndex = 0; tempIndex < dataset.length; tempIndex++) {
+      sum = sum + dataset[tempIndex];
+      n++
+    }
+  }
+  let average = sum / n;
+  return average;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,7 +162,24 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+  let sum = 0;
+  let n = 0;
+  let lowest = 1000;
+  let average = 0;
+  for(let arrayIndex = 0; arrayIndex < weather.length; arrayIndex++) {
+    n = 0;
+    sum = 0;
+    let dataset = weather[arrayIndex];
+    for(let tempIndex = 0; tempIndex < dataset.length; tempIndex++) {
+      sum = sum + dataset[tempIndex];
+      n++;
+    }
+    average = sum /n;
+    if (average < lowest) {
+      lowest = average;
+    }
+  }
+  return lowest
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -145,8 +191,20 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  let firstArray = str.split('\n');
+  let answer = [];
+  for(let i = 0; i < firstArray.length; i++) {
+    let innerArray = firstArray[i].split(',');
+    console.log(innerArray);
+    let sum = 0;
+    for( let j = 0; j < innerArray.length; j++) {
+      sum = sum + parseInt(innerArray[j]);
+    }
+    answer.push(sum);
+  }
+  return answer;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
